@@ -1,12 +1,12 @@
 import { DataSource, Repository } from "typeorm";
-import { Users } from "./user.entity";
+import { User } from "./user.entity";
 import { Injectable } from "@nestjs/common";
 import { AuthCredentialsDto } from "./dto/auth-credential.dto";
 
 @Injectable()
-export class UserRepository extends Repository<Users> {
+export class UserRepository extends Repository<User> {
     constructor(private dataSource: DataSource) {
-        super(Users, dataSource.createEntityManager());
+        super(User, dataSource.createEntityManager());
     }
 
     async createUser(authCredentialsDto: AuthCredentialsDto): Promise<void> {
