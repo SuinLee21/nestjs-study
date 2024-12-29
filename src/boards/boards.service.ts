@@ -13,8 +13,17 @@ export class BoardsService {
         @InjectRepository(BoardRepository)
         private boardRepository: Repository<Board>,
     ) { }
-    // private boards: Board[] = [];
 
+    async getBoardById(id: number): Promise<Board> {
+        const found = await this.boardRepository.findOneBy({ id });
+        // const found = this.boards.find((board) => board.id === id);
+
+        if (!found) {
+            throw new NotFoundException(`Can't find Board with id ${id}`);
+        }
+
+        return found;
+    }
     // getAllBoards(): Board[] {
     //     return this.boards;
     // }
@@ -32,15 +41,6 @@ export class BoardsService {
     //     return board;
     // }
 
-    // getBoardById(id: string): Board {
-    //     const found = this.boards.find((board) => board.id === id);
-
-    //     if (!found) {
-    //         throw new NotFoundException(`Can't find Board with id ${id}`);
-    //     }
-
-    //     return found;
-    // }
 
     // deleteBoard(id: string): void {
     //     const found = this.getBoardById(id);
