@@ -14,18 +14,18 @@ export class BoardsController {
         return this.boardsService.getBoardById(id);
     }
 
+    @Post()
+    @UsePipes(ValidationPipe) // handler-level pipe
+    createBoard(
+        @Body() createBoardDto: CreateBoardDto
+    ): Promise<Board> {
+        return this.boardsService.createBoard(createBoardDto);
+    }
     // @Get()
     // getAllBoards(): Board[] {
     //     return this.boardsService.getAllBoards();
     // }
 
-    // @Post()
-    // @UsePipes(ValidationPipe) // handler-level pipe
-    // createBoard(
-    //     @Body() createBoardDto: CreateBoardDto
-    // ): Board {
-    //     return this.boardsService.createBoard(createBoardDto);
-    // }
 
 
     // @Delete('/:id')

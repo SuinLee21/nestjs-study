@@ -24,22 +24,15 @@ export class BoardsService {
 
         return found;
     }
+
+    createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
+        return this.boardRepository.createBoard(createBoardDto);
+    }
+
     // getAllBoards(): Board[] {
     //     return this.boards;
     // }
 
-    // createBoard(createBoardDto: CreateBoardDto): Board {
-    //     const { title, description } = createBoardDto;
-    //     const board: Board = {
-    //         id: uuid(),
-    //         title,
-    //         description,
-    //         status: BoardStatus.PUBLIC,
-    //     }
-
-    //     this.boards.push(board);
-    //     return board;
-    // }
 
 
     // deleteBoard(id: string): void {
