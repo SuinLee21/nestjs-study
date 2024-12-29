@@ -11,7 +11,7 @@ import { Board } from './board.entity';
 export class BoardsService {
     constructor(
         @InjectRepository(BoardRepository)
-        private boardRepository: Repository<Board>,
+        private boardRepository: BoardRepository,
     ) { }
 
     async getBoardById(id: number): Promise<Board> {
