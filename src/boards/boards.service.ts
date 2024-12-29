@@ -11,7 +11,7 @@ export class BoardsService {
         return this.boards;
     }
 
-    createBoard(createBoardDto: CreateBoardDto) {
+    createBoard(createBoardDto: CreateBoardDto): Board {
         const { title, description } = createBoardDto;
         const board: Board = {
             id: uuid(),
