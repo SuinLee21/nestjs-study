@@ -9,6 +9,11 @@ import { Board } from './board.entity';
 export class BoardsController {
     constructor(private boardsService: BoardsService) { } // Dependency Injection
 
+    @Get()
+    getAllBoards(): Promise<Board[]> {
+        return this.boardsService.getAllBoards();
+    }
+
     @Get('/:id')
     getBoardById(@Param('id') id: number): Promise<Board> {
         return this.boardsService.getBoardById(id);
@@ -34,10 +39,4 @@ export class BoardsController {
     ): Promise<Board> {
         return this.boardsService.updateBoardStatus(id, status);
     }
-    // @Get()
-    // getAllBoards(): Board[] {
-    //     return this.boardsService.getAllBoards();
-    // }
-
-
 }

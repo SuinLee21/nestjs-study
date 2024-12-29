@@ -14,6 +14,10 @@ export class BoardsService {
         private boardRepository: BoardRepository,
     ) { }
 
+    async getAllBoards(): Promise<Board[]> {
+        return this.boardRepository.find();
+    }
+
     async getBoardById(id: number): Promise<Board> {
         const found = await this.boardRepository.findOneBy({ id });
         // const found = this.boards.find((board) => board.id === id);
@@ -45,11 +49,4 @@ export class BoardsService {
 
         return board;
     }
-    // getAllBoards(): Board[] {
-    //     return this.boards;
-    // }
-
-
-
-
 }
