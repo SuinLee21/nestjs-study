@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRepository } from './user.repository';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
@@ -16,10 +17,11 @@ import { PassportModule } from '@nestjs/passport';
       signOptions: {
         expiresIn: 60 * 60,
       }
-    }), // jwt 모듈 등록록
+    }), // jwt 모듈 등록
     TypeOrmModule.forFeature([UserRepository])
   ],
   controllers: [AuthController],
-  providers: [AuthService, UserRepository]
+  providers: [AuthService, UserRepository, JwtStrategy],
+  exports: [JwtStrategy, PassportModule]
 })
 export class AuthModule { }
